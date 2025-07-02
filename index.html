@@ -1,1 +1,1070 @@
-sddd
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOTH STAIN REMOVER - Neylna Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .new-order-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            animation: slideIn 0.5s ease-out forwards;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        @keyframes slideIn {
+            from {transform: translateY(100px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+        
+        .slideOut {
+            animation: slideOut 0.5s ease-in forwards;
+        }
+        
+        @keyframes slideOut {
+            from {transform: translateY(0); opacity: 1;}
+            to {transform: translateY(100px); opacity: 0;}
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {transform: scale(1);}
+            50% {transform: scale(1.05);}
+            100% {transform: scale(1);}
+        }
+        
+        .badge {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {transform: translateY(0px);}
+            50% {transform: translateY(-10px);}
+            100% {transform: translateY(0px);}
+        }
+        
+        .countdown-timer {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .sticker {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff6b81;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .highlight-box {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b81, #ff4757);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        .avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #55c4cf;
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://cdn.orderonline.id/uploads/images_8057731750768190275.png" alt="Neylna Store Logo" class="h-12 mr-3">
+                <h1 class="text-xl font-bold text-gray-800">Neylna Store</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center bg-yellow-100 px-3 py-1 rounded-full">
+                    <i class="fas fa-star text-yellow-500 mr-1"></i>
+                    <span class="text-sm font-medium">4.9/5 (1.2K Reviews)</span>
+                </div>
+                <div class="hidden md:flex items-center bg-blue-100 px-3 py-1 rounded-full">
+                    <i class="fas fa-check-circle text-blue-500 mr-1"></i>
+                    <span class="text-sm font-medium">Original Product</span>
+                </div>
+                <div class="flex items-center bg-green-100 px-3 py-1 rounded-full">
+                    <i class="fas fa-box text-green-500 mr-1"></i>
+                    <span class="text-sm font-medium">Stok: 78</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-8 md:py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <div class="relative inline-block">
+                        <span class="sticker">BEST SELLER</span>
+                        <img src="https://cdn.orderonline.id/uploads/images_8331781751388635440.jpg" alt="Cloth Stain Remover" class="rounded-lg shadow-xl w-full max-w-md mx-auto floating">
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">CLOTH STAIN REMOVER</h1>
+                    <p class="text-lg text-gray-600 mb-6">Solusi Cepat Hilangkan Noda Membandel Tanpa Merusak Pakaian Kesayangan Anda!</p>
+                    
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600">1.200+ Reviews</span>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow-md mb-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="font-medium">100% Original Product</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-truck text-blue-500 mr-2"></i>
+                            <span class="font-medium">Gratis Ongkir Hari Ini</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-purple-500 mr-2"></i>
+                            <span class="font-medium">Garansi Uang Kembali</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center">
+                            <span class="text-red-500 font-bold text-2xl mr-3">Rp 157.000</span>
+                            <span class="price-original text-gray-500">Rp 235.500</span>
+                            <span class="ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded">33% OFF</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">Harga normal Rp 235.500</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-medium">Stok Tersedia:</span>
+                            <span class="font-bold text-green-600" id="stock-counter">78</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-clock text-yellow-500 mr-2"></i>
+                            <span class="font-medium">Promo Berakhir Dalam:</span>
+                        </div>
+                        <div class="countdown-timer bg-gradient-to-r from-pink-500 to-red-500 rounded-lg p-3 text-center">
+                            <div id="countdown" class="text-xl font-bold">23:59:59</div>
+                            <p class="text-sm">Segera dapatkan diskon dan gratis ongkir!</p>
+                        </div>
+                    </div>
+                    
+                    <button id="cta-button" class="w-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 pulse">
+                        <i class="fas fa-shopping-cart mr-2"></i> BELI SEKARANG JUGA
+                    </button>
+                    
+                    <p class="text-center text-sm text-gray-500 mt-3">KHUSUS PEMBAYARAN TF HARI INI DAPAT GRATIS ONGKIR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solution Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Masalah Noda Membandel? Kami Punya Solusinya!</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-500 mb-4">Masalah Yang Sering Dihadapi:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Noda membandel yang sulit hilang meski sudah dicuci berkali-kali</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Pakaian favorit rusak karena bahan kimia pembersih yang keras</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Harus pergi ke laundry khusus untuk noda tertentu</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Bau tidak sedap setelah mencoba berbagai produk pembersih</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-blue-500 mb-4">Solusi Dari CLOTH STAIN REMOVER:</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Formula khusus yang mampu menghilangkan berbagai jenis noda dalam hitungan menit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Aman untuk semua jenis bahan pakaian tanpa merusak serat</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Tanpa bahan kimia berbahaya dan ramah lingkungan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Wanginya segar dan tahan lama setelah pemakaian</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Kenapa CLOTH STAIN REMOVER Pilihan Terbaik?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt text-pink-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Cepat & Efektif</h3>
+                    <p class="text-gray-600">Hilangkan noda dalam hitungan menit tanpa perlu menggosok keras</p>
+                </div>
+                
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ramah Lingkungan</h3>
+                    <p class="text-gray-600">Formula biodegradable yang aman untuk kulit dan lingkungan</p>
+                </div>
+                
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Multi Bahan</h3>
+                    <p class="text-gray-600">Aman untuk katun, sutra, wol, denim dan berbagai jenis bahan lainnya</p>
+                </div>
+                
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-wind text-purple-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Wanginya Tahan Lama</h3>
+                    <p class="text-gray-600">Memberikan aroma segar yang tahan lama setelah pemakaian</p>
+                </div>
+                
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-flask text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Formula Khusus</h3>
+                    <p class="text-gray-600">Dikembangkan oleh ahli kimia tekstil dengan teknologi terbaru</p>
+                </div>
+                
+                <div class="product-card bg-white p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Garansi Kepuasan</h3>
+                    <p class="text-gray-600">Uang kembali 100% jika tidak puas dengan hasilnya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Use Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Cara Penggunaan Mudah</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://cdn.orderonline.id/uploads/images_3571051751388636746.jpg" alt="Cara Pakai Cloth Stain Remover" class="rounded-lg shadow-lg w-full max-w-md mx-auto">
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Siapkan wadah yang cukup</h3>
+                                <p class="text-gray-600">Siapkan wadah dan tuangkan 3-4 sendok makan serbuk Cloth Stain remover</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Tambahkan air panas</h3>
+                                <p class="text-gray-600">Larutkan dengan air panas mendidih dan masukkan pakaian kotor</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Diamkan</h3>
+                                <p class="text-gray-600">Tunggu dan diamkan selama 30-60 menit untuk formula bekerja lebih maksimal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">4</div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Bilas hingga bersih</h3>
+                                <p class="text-gray-600">Kemudian bilas hingga bersih dan keringkan seperti mencuci baju pada umumnya</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            <span class="font-bold">Tips:</span>
+                        </div>
+                        <p class="text-gray-600 mt-1">Untuk noda yang sangat membandel, kucek sedikit sebelum dibilas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Apa Kata Pelanggan Kami?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="avatar w-12 h-12 mr-3">J</div>
+                        <div>
+                            <h4 class="font-bold">Jessica - Mahasiswa</h4>
+                            <p class="text-sm text-gray-500">Jakarta</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Noda tinta di blazer putih saya hilang dalam sekali pakai! Padahal sudah dicoba berbagai produk lain tapi tidak berhasil. Terima kasih CLOTH STAIN REMOVER!"</p>
+                </div>
+                
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="avatar w-12 h-12 mr-3">S</div>
+                        <div>
+                            <h4 class="font-bold">Sarah - Ibu Rumah Tangga</h4>
+                            <p class="text-sm text-gray-500">Bandung</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Anak saya sering menumpahkan makanan di baju. Dengan produk ini, noda-noda itu hilang dengan mudah. Sekarang tidak perlu khawatir lagi!"</p>
+                </div>
+                
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="avatar w-12 h-12 mr-3">A</div>
+                        <div>
+                            <h4 class="font-bold">Anita - Karyawan Kantor</h4>
+                            <p class="text-sm text-gray-500">Surabaya</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Noda kopi di blouse favorit saya hilang setelah pakai ini. Wanginya juga enak, tidak seperti produk lain yang baunya menyengat."</p>
+                </div>
+                
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="avatar w-12 h-12 mr-3">M</div>
+                        <div>
+                            <h4 class="font-bold">Maya - Pengusaha</h4>
+                            <p class="text-sm text-gray-500">Bali</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Produk ini benar-benar menghemat waktu dan uang saya. Tidak perlu ke laundry khusus untuk noda tertentu. Sangat recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Galeri Produk</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="cursor-pointer" onclick="openModal('https://cdn.orderonline.id/uploads/images_4435481751388635418.jpg')">
+                    <img src="https://cdn.orderonline.id/uploads/images_4435481751388635418.jpg" alt="Cloth Stain Remover" class="rounded-lg shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity">
+                </div>
+                <div class="cursor-pointer" onclick="openModal('https://cdn.orderonline.id/uploads/images_8331781751388635440.jpg')">
+                    <img src="https://cdn.orderonline.id/uploads/images_8331781751388635440.jpg" alt="Cloth Stain Remover" class="rounded-lg shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity">
+                </div>
+                <div class="cursor-pointer" onclick="openModal('https://cdn.orderonline.id/uploads/images_3571051751388636746.jpg')">
+                    <img src="https://cdn.orderonline.id/uploads/images_3571051751388636746.jpg" alt="Cloth Stain Remover" class="rounded-lg shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity">
+                </div>
+                <div class="cursor-pointer" onclick="openModal('https://cdn.orderonline.id/uploads/images_1645081751388636790.jpg')">
+                    <img src="https://cdn.orderonline.id/uploads/images_1645081751388636790.jpg" alt="Cloth Stain Remover" class="rounded-lg shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viral Section -->
+    <section class="py-12 bg-gradient-to-r from-pink-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Viral & Terjual Ribuan Botol!</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Produk kami telah membantu ribuan wanita Indonesia menghilangkan noda membandel dengan mudah dan cepat.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://cdn.orderonline.id/uploads/images_1645081751388636790.jpg" alt="Cloth Stain Remover Viral" class="rounded-lg shadow-xl w-full max-w-md mx-auto">
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                            <div class="text-3xl font-bold text-pink-500 mb-2" id="sales-counter">5000+</div>
+                            <p class="text-gray-600">Botol Terjual</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                            <div class="text-3xl font-bold text-blue-500 mb-2" id="customer-counter">4200+</div>
+                            <p class="text-gray-600">Pelanggan Puas</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                            <div class="text-3xl font-bold text-green-500 mb-2">98%</div>
+                            <p class="text-gray-600">Rate Kepuasan</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                            <div class="text-3xl font-bold text-purple-500 mb-2">30+</div>
+                            <p class="text-gray-600">Kota di Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4">Sudah Terbukti & Terpercaya</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Halal Certified</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">BPOM Approved</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Eco Friendly</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Hypoallergenic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 bg-gradient-to-r from-pink-500 to-red-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Jangan Biarkan Noda Merusak Hari Anda!</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Dapatkan CLOTH STAIN REMOVER sekarang dan rasakan perbedaannya!</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
+                <div class="bg-white text-gray-800 p-4 rounded-lg shadow-lg w-full max-w-xs">
+                    <h3 class="font-bold text-lg mb-2">PAKET BIASA</h3>
+                    <div class="flex justify-center items-baseline mb-2">
+                        <span class="text-red-500 font-bold text-3xl">Rp 157.000</span>
+                        <span class="ml-2 price-original text-gray-500">Rp 235.500</span>
+                    </div>
+                    <p class="text-sm mb-2">Isi 500g</p>
+                    <button class="w-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
+                        BELI SEKARANG
+                    </button>
+                </div>
+                
+                <div class="relative bg-white text-gray-800 p-4 rounded-lg shadow-lg w-full max-w-xs">
+                    <div class="discount-badge">33%</div>
+                    <h3 class="font-bold text-lg mb-2">PAKET JUMBO</h3>
+                    <div class="flex justify-center items-baseline mb-2">
+                        <span class="text-red-500 font-bold text-3xl">Rp 189.000</span>
+                        <span class="ml-2 price-original text-gray-500">Rp 283.500</span>
+                    </div>
+                    <p class="text-sm mb-2">Isi 1kg (Lebih Hemat)</p>
+                    <button class="w-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
+                        BELI SEKARANG
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 text-yellow-800 inline-block px-4 py-2 rounded-full mb-6">
+                <i class="fas fa-gift mr-2"></i> KHUSUS HARI INI: Gratis Ongkir untuk Pembayaran Transfer!
+            </div>
+            
+            <div class="countdown-timer bg-gradient-to-r from-pink-700 to-red-700 rounded-lg p-4 max-w-md mx-auto mb-8">
+                <div class="flex items-center justify-center mb-2">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span class="font-medium">Promo Berakhir Dalam:</span>
+                </div>
+                <div id="countdown2" class="text-2xl font-bold">23:59:59</div>
+            </div>
+            
+            <div class="flex items-center justify-center space-x-4 mb-6">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                    <span>100% Original</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                    <span>Garansi Kepuasan</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                    <span>Bantuan 24/7</span>
+                </div>
+            </div>
+            
+            <button id="cta-button2" class="bg-white text-pink-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 pulse">
+                <i class="fas fa-shopping-cart mr-2"></i> PESAN SEKARANG JUGA
+            </button>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="py-12 bg-white" id="order-form">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-50 p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Form Pemesanan</h2>
+                <p class="text-center text-gray-600 mb-8">Isi form berikut untuk memesan CLOTH STAIN REMOVER sekarang juga!</p>
+                
+                <!-- OrderOnline Embed Code - v8.0.4 -->
+                <div class="ooef">
+                    <form class="orderonline-embed-form" data-username="vera" data-product-slug="cloth-stain-remover" data-product-id="686411d16a105366600ac1f5" id="oo-embed-form-cloth-stain-remover-2099" data-origin="orderonline">
+                        <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Pertanyaan Yang Sering Diajukan</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button class="flex justify-between items-center w-full text-left font-bold text-lg" onclick="toggleFAQ(this)">
+                        <span>Apa saja jenis noda yang bisa dihilangkan oleh CLOTH STAIN REMOVER?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden mt-2 text-gray-600">
+                        <p>Produk kami efektif untuk berbagai jenis noda termasuk noda makanan, minyak, tinta, darah, lipstik, kopi, teh, wine, grass, tanah, dan banyak lagi. Formula khusus kami bekerja pada berbagai jenis noda organik dan non-organik.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button class="flex justify-between items-center w-full text-left font-bold text-lg" onclick="toggleFAQ(this)">
+                        <span>Apakah produk ini aman untuk bahan pakaian yang halus seperti sutra atau wool?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden mt-2 text-gray-600">
+                        <p>Ya, CLOTH STAIN REMOVER diformulasikan khusus untuk aman digunakan pada berbagai jenis bahan termasuk bahan halus seperti sutra, wool, dan cashmere. Namun, kami selalu menyarankan untuk melakukan tes kecil di area yang tidak terlihat terlebih dahulu.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button class="flex justify-between items-center w-full text-left font-bold text-lg" onclick="toggleFAQ(this)">
+                        <span>Berapa lama waktu pengiriman ke kota saya?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden mt-2 text-gray-600">
+                        <p>Waktu pengiriman bervariasi tergantung lokasi Anda. Untuk Jabodetabek biasanya 1-2 hari kerja, kota besar lainnya 2-3 hari kerja, dan daerah terpencil 3-5 hari kerja. Kami menggunakan jasa pengiriman terpercaya seperti JNE, J&T, dan SiCepat.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <button class="flex justify-between items-center w-full text-left font-bold text-lg" onclick="toggleFAQ(this)">
+                        <span>Bagaimana cara klaim garansi jika tidak puas dengan produk?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden mt-2 text-gray-600">
+                        <p>Kami menawarkan garansi uang kembali 100% jika Anda tidak puas dengan produk. Untuk mengklaim garansi, cukup hubungi tim customer service kami melalui WhatsApp di nomor yang tertera dalam paket pengiriman dalam waktu 7 hari setelah menerima produk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.orderonline.id/uploads/images_8057731750768190275.png" alt="Neylna Store Logo" class="h-10 mr-3">
+                        <h2 class="text-xl font-bold">Neylna Store</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">Solusi terbaik untuk perawatan pakaian Anda dengan produk-produk berkualitas tinggi.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4">Tautan Cepat</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Beranda</a></li>
+                            <li><a href="#order-form" class="text-gray-400 hover:text-white transition">Pesan Sekarang</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Testimoni</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-4">Kontak Kami</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                                <span class="text-gray-400">cs@neylnastore.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                                <span class="text-gray-400">Jakarta, Indonesia</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-lg mb-4">Ikuti Kami</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 Neylna Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- New Order Popup -->
+    <div id="newOrderPopup" class="new-order-popup hidden">
+        <div class="bg-white rounded-lg w-64">
+            <div class="flex justify-between items-center bg-gray-100 px-3 py-2">
+                <span class="text-sm font-medium">Pesanan Baru</span>
+                <button onclick="closePopup()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-3">
+                <div class="flex items-center mb-2">
+                    <div class="avatar w-8 h-8 mr-2">S</div>
+                    <div>
+                        <p class="text-sm font-medium">Siti</p>
+                        <p class="text-xs text-gray-500">Bandung</p>
+                    </div>
+                </div>
+                <p class="text-sm mb-2">Baru saja memesan <span class="font-medium">CLOTH STAIN REMOVER</span></p>
+                <div class="flex justify-between text-xs text-gray-500">
+                    <span>1 menit yang lalu</span>
+                    <span>Paket Jumbo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-5 right-5 bg-pink-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+            
+            const diff = midnight - now;
+            
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown2').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Stock Counter Animation
+        function animateStockCounter() {
+            const stockElement = document.getElementById('stock-counter');
+            let stock = parseInt(stockElement.textContent);
+            const targetStock = Math.floor(Math.random() * 20) + 70; // Random between 70-90
+            
+            const interval = setInterval(() => {
+                if (stock > targetStock) {
+                    stock--;
+                    stockElement.textContent = stock;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 3000);
+        }
+        
+        // Sales Counter Animation
+        function animateSalesCounter() {
+            const salesElement = document.getElementById('sales-counter');
+            let sales = 5000;
+            
+            setInterval(() => {
+                sales += Math.floor(Math.random() * 3) + 1;
+                salesElement.textContent = sales + "+";
+            }, 5000);
+        }
+        
+        // Customer Counter Animation
+        function animateCustomerCounter() {
+            const customerElement = document.getElementById('customer-counter');
+            let customers = 4200;
+            
+            setInterval(() => {
+                customers += Math.floor(Math.random() * 2) + 1;
+                customerElement.textContent = customers + "+";
+            }, 5000);
+        }
+        
+        // Image Modal
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+        
+        // FAQ Toggle
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+        
+        // New Order Popup
+        function showNewOrderPopup() {
+            const popup = document.getElementById('newOrderPopup');
+            popup.classList.remove('hidden');
+            
+            // Reduce stock by 1 in both counters
+            const stockElement = document.getElementById('stock-counter');
+            const headerStockElement = document.querySelector('.flex.items-center.bg-green-100.px-3.py-1.rounded-full span');
+            
+            let stock = parseInt(stockElement.textContent);
+            if (stock > 0) {
+                stock--;
+                stockElement.textContent = stock;
+                headerStockElement.textContent = `Stok: ${stock}`;
+            }
+            
+            setTimeout(() => {
+                popup.classList.add('slideOut');
+                setTimeout(() => {
+                    popup.classList.remove('slideOut');
+                    popup.classList.add('hidden');
+                }, 500);
+            }, 5000);
+        }
+        
+        function closePopup() {
+            const popup = document.getElementById('newOrderPopup');
+            popup.classList.add('slideOut');
+            setTimeout(() => {
+                popup.classList.remove('slideOut');
+                popup.classList.add('hidden');
+            }, 500);
+        }
+        
+        // Scroll to Top Button
+        window.onscroll = function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        };
+        
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // CTA Button Click
+        document.getElementById('cta-button').addEventListener('click', function() {
+            document.getElementById('order-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        document.getElementById('cta-button2').addEventListener('click', function() {
+            document.getElementById('order-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            animateStockCounter();
+            animateSalesCounter();
+            animateCustomerCounter();
+            
+            // Show new order popup after 3 seconds
+            setTimeout(showNewOrderPopup, 3000);
+            
+            // Show random popups every 15-30 seconds
+            setInterval(() => {
+                if (Math.random() > 0.3) { // 70% chance to show
+                    showNewOrderPopup();
+                }
+            }, 15000 + Math.random() * 15000);
+        });
+        
+        // OrderOnline Embed Script
+        if (typeof xLogError != 'function') {
+            var xLogError = function (error) {
+                var req = new XMLHttpRequest();
+                var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                req.open('POST', 'https://api.orderonline.id/log', true);
+                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                req.send(params);
+            };
+        }
+        try {
+            if (typeof xEmbedScript != 'function') {
+                var xEmbedScript = function () {
+                    !function(w, d, e, v, id, t, s) {
+                        if (d.getElementById(id)) return;
+                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                        s = d.getElementsByTagName(e)[0];
+                        s.parentNode.insertBefore(t, s);
+                    }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                };
+            }
+            if (typeof xEmbedInit != 'function') {
+                var xEmbedInit = function (w, n) {
+                    if (w.ooe) return;
+                    n = w.ooe = function() {
+                        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!w._ooe) w._ooe = n;
+                    n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                };
+            }
+            xEmbedInit(window);
+            ooe('setup', 'redirect', 'https://vera.orderonline.id');
+            ooe('init', '5f1a7807a9bf807d6c63d963', '686411d16a105366600ac1f5', '686411d16a105366600ac1f6', 'oo-embed-form-cloth-stain-remover-2099', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":false});
+            if (!window.jQuery) {
+                !function(w, d, e, v, id, t, s) {
+                    if (d.getElementById(id)) return;
+                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                    t.addEventListener('load', xEmbedScript);
+                    s = d.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s);
+                }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+            } else {
+                xEmbedScript();
+            }
+        } catch (e) {
+            xLogError(e);
+            throw e;
+        }
+    </script>
+</body>
+</html>
